@@ -1,39 +1,28 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Story } from "@ladle/react";
 import { PewPewMesh } from "../";
 
-const meta = {
-  title: "PewPewMesh",
-  component: PewPewMesh,
-  tags: ["docsPage"],
-  args: {
-    mesh:`
-    meshes = {
-        {
-          vertexes = {{0,0}, {500,0}, {500,500}, {0,500}},
-          colors = {0xffffffff, 0xffff00ff, 0xff00ffff, 0x00ff0000},
-          segments = {{0,1,2,3,0}}
-        }
-      }
-    `,
+const meshString = `
+meshes = {
+  { -- A 500x500 square
+    vertexes = {{0,0,0}, {500,0,0}, {500,500,0}, {0,500,0}},
+    colors = {0xffffffff, 0xffff00ff, 0xff00ffff, 0xff0000ff},
+    segments = {{0,1,2,3,0}}
+  },
+  { -- A right-angled triangle
+    vertexes = {{0,0,0}, {500,0,0}, {0,500,0}},
+    colors = {0xffff00ff, 0xff00ffff, 0xff0000ff},
+    segments = {{0,1,2,0}}
+  }
+}
+`;
 
-  },
-} satisfies Meta<typeof PewPewMesh>;
-export default meta;
-type Story = StoryObj<typeof meta>;
-export const Primary: Story = {
-  args: {
-    mesh:`
-    meshes = {
-        {
-          vertexes = {{0,0}, {500,0}, {500,500}, {0,500}},
-          colors = {0xffffffff, 0xffff00ff, 0xff00ffff, 0x00ff0000},
-          segments = {{0,1,2,3,0}}
-        }
-      }
-    `,
-    style: {
-        width: "100%",
-        height: "85vh",
-    },
-  },
+type storyType = {
+  mesh: string;
+};
+export const PewPewMeshStory: Story<storyType> = ({ mesh }) => (
+  <PewPewMesh mesh={mesh} style={{ width: "100%", height: "100%" }} />
+);
+
+PewPewMeshStory.args = {
+  mesh: meshString,
 };
