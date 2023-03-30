@@ -1,0 +1,39 @@
+{
+  "about": {
+    "homepage": "https://www.ladle.dev",
+    "github": "https://github.com/tajo/ladle",
+    "version": 1
+  },
+  "stories": {
+    "pewpew--pew-pew-story": {
+      "name": "Pew pew story",
+      "levels": [
+        "Pewpew"
+      ],
+      "locStart": 21,
+      "locEnd": 23,
+      "filePath": "src/stories/Pewpew.stories.tsx",
+      "meta": {}
+    },
+    "pew-pew-mesh--pew-pew-mesh-story": {
+      "name": "Pew pew mesh story",
+      "levels": [
+        "Pew pew mesh"
+      ],
+      "locStart": 22,
+      "locEnd": 24,
+      "filePath": "src/stories/PewPewMesh.stories.tsx",
+      "meta": {}
+    },
+    "pew-pew-string--pew-pew-string-story": {
+      "name": "Pew pew string story",
+      "levels": [
+        "Pew pew string"
+      ],
+      "locStart": 4,
+      "locEnd": 6,
+      "filePath": "src/stories/PewPewString.stories.tsx",
+      "meta": {}
+    }
+  }
+}

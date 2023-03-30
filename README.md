@@ -1,5 +1,7 @@
 # react-pewpew
 
+![badge-npm-version](https://img.shields.io/npm/v/react-pewpew)
+
 `react-pewpew` is a set of react components made for easily rendering an instance of PewEngine in react.<br/>
 
 ## Prerequisites
