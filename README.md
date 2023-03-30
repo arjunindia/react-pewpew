@@ -1,8 +1,3 @@
-import { Meta } from '@storybook/blocks';
-
-<Meta title="Introduction" />
-
-
 # react-pewpew
 
 `react-pewpew` is a set of react components made for easily rendering an instance of PewEngine in react.<br/>
