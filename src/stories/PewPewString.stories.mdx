@@ -1,0 +1,14 @@
+
+import { Meta, Story } from "@storybook/addon-docs";
+import {PewPewString} from ".."
+
+<Meta title="PewPewString" component={PewPewString} />
+
+# `<PewPewString/>` component
+
+This component takes a string of pewpew code and renders it.<br/>
+It is a wrapper around the `<PewPew>` component.<br/>
+It takes a `level` prop which is a string of pewpew code.<br/>
+Useful for quickly rendering the game from lua code.
+You can still pass other arguments which are passed down to the iFrame in the `PewPew` component.
+<PewPewString level="pewpew.set_level_size(500fx, 500fx) pewpew.new_player_ship(10fx, 10fx, 0)" style={{width:"100%",height:"90vh"}}/>
