@@ -267,6 +267,10 @@
     }
   </script>
   <script defer>
+    let wasmReady = false;
+    Module['onRuntimeInitialized'] = function() {
+      wasmReady = true;
+    }
     window.addEventListener("message", (event) => {
         // extract the data from the message event
         const { data } = event;
@@ -275,10 +279,19 @@
             console.log(level);
         }
         if (type === "level"){
-          var array = new Uint8Array(level);
-          var heapSpace = Module._malloc(array.length * array.BYTES_PER_ELEMENT);
-          Module.HEAP8.set(array, heapSpace);
-          Module['__Z9LoadLevelmi'](heapSpace, array.length);
+          try{
+            if (!wasmReady) {
+              console.log("WASM not ready yet");
+              return;
+            }
+            var array = new Uint8Array(level);
+            var heapSpace = Module._malloc(array.length * array.BYTES_PER_ELEMENT);
+            Module.HEAP8.set(array, heapSpace);
+            Module['__Z9LoadLevelmi'](heapSpace, array.length);
+          }
+          catch(e){
+            console.log(e);
+          }
         }
       });
       

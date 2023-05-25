@@ -35,7 +35,7 @@ function PewPew(props: PewPewProps) {
     );
   };
   React.useEffect(() => {
-    setTimeout(postToIFrame, 1000);
+    postToIFrame();
   }, [props.level]);
 
   let { level, ...rest } = props;
