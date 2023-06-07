@@ -9,21 +9,27 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 export default defineConfig(() => ({
   plugins: [
     peerDepsExternal({
-      packageJsonPath: resolve(import.meta.url, "package.json"),
+      packageJsonPath: resolve(__dirname, "package.json"),
     }),
     react(),
     tsConfigPaths(),
-    dts({
-      include: ["src"],
-    }),
+    dts(),
   ],
   build: {
     lib: {
-      entry: resolve("src", "index.ts"),
+      entry: resolve(__dirname, "src/index.ts"),
       name: "react-pewpew",
       formats: ["es"],
       fileName: (format) =>
         `react-pewpew.${format === "es" ? "esm" : format}.js`,
+      sourcemap: true,
+      query: {
+        external: Object.keys(packageJson.peerDependencies),
+      },
+      imports: {
+        react: "react",
+      },
+
     },
     optimizeDeps: {
       exclude: Object.keys(packageJson.peerDependencies),
