@@ -9,7 +9,7 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 export default defineConfig(() => ({
   plugins: [
     peerDepsExternal({
-      packageJsonPath: resolve(__dirname, "package.json"),
+      packageJsonPath: resolve(import.meta.url, "package.json"),
     }),
     react(),
     tsConfigPaths(),
