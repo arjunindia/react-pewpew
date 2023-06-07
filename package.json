@@ -32,7 +32,7 @@
     "vite-plugin-dts": "^1.7.1",
     "vite-tsconfig-paths": "^4.0.3"
   },
-  "types": "dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/react-pewpew.esm.js"
   },
