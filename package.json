@@ -1,7 +1,7 @@
 {
   "name": "react-pewpew",
   "private": false,
-  "version": "1.0.13",
+  "version": "1.0.14",
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -53,5 +53,5 @@
   ],
 
   "readme": "ERROR: No README data found!",
-  "_id": "react-pewpew@1.0.13"
+  "_id": "react-pewpew@1.0.14"
 }

@@ -13,7 +13,18 @@ export default defineConfig(() => ({
     }),
     react(),
     tsConfigPaths(),
-    dts(),
+    dts({
+      compilerOptions: {
+        allowJs: true,
+        checkJs: true,
+        declaration: true,
+        declarationMap: true,
+        baseUrl: ".",
+        paths: {
+          "@react-pewpew/*": ["src/*"],
+        },
+      },
+    }),
   ],
   build: {
     lib: {
@@ -23,12 +34,6 @@ export default defineConfig(() => ({
       fileName: (format) =>
         `react-pewpew.${format === "es" ? "esm" : format}.js`,
       sourcemap: true,
-      query: {
-        external: Object.keys(packageJson.peerDependencies),
-      },
-      imports: {
-        react: "react",
-      },
 
     },
     optimizeDeps: {
