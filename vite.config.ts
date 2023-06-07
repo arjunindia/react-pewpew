@@ -21,9 +21,9 @@ export default defineConfig(() => ({
     lib: {
       entry: resolve("src", "index.ts"),
       name: "react-pewpew",
-      formats: ["es", "cjs"],
+      formats: ["es"],
       fileName: (format) =>
-        `react-pewpew.${format === "cjs" ? "cjs" : "es.js"}`,
+        `react-pewpew.${format === "es" ? "esm" : format}.js`,
     },
     optimizeDeps: {
       exclude: Object.keys(packageJson.peerDependencies),
