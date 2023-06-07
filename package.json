@@ -1,7 +1,7 @@
 {
   "name": "react-pewpew",
   "private": false,
-  "version": "1.0.11",
+  "version": "1.0.13",
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -32,13 +32,26 @@
     "vite-plugin-dts": "^1.7.1",
     "vite-tsconfig-paths": "^4.0.3"
   },
+  "dependencies": {
+    "jszip": "^3.7.1"
+  },
+  "main": "./dist/react-pewpew.cjs.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/react-pewpew.esm.js"
+    ".": {
+      "import": "./dist/react-pewpew.esm.js",
+      "require": "./dist/react-pewpew.cjs.js"
+    },
+    "./dist/index.d.ts": "./dist/index.d.ts",
+    "./dist/react-pewpew.esm.js": "./dist/react-pewpew.esm.js",
+    "./dist/react-pewpew.cjs.js": "./dist/react-pewpew.cjs.js"
   },
+  "module": "./dist/react-pewpew.esm.js",
+
   "files": [
     "dist"
   ],
+
   "readme": "ERROR: No README data found!",
-  "_id": "react-pewpew@1.0.11"
+  "_id": "react-pewpew@1.0.13"
 }

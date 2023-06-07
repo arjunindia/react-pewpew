@@ -19,7 +19,7 @@ export default defineConfig(() => ({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "react-pewpew",
-      formats: ["es"],
+      formats: ["es","cjs"],
       fileName: (format) =>
         `react-pewpew.${format === "es" ? "esm" : format}.js`,
       sourcemap: true,
