@@ -1,7 +1,4 @@
-function stringEscape(s: string) {
-    return s ? s.replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/\t/g,'\\t').replace(/\v/g,'\\v').replace(/'/g,"\\'").replace(/"/g,'\\"').replace(/[\x00-\x1F\x80-\x9F]/g,hex) : s;
-    function hex(c:string) { var v = '0'+c.charCodeAt(0).toString(16); return '\\x'+v.substr(v.length-2); }
-}
+
 const srcHTML = //html
 `
 <!doctype html>
@@ -195,7 +192,7 @@ const srcHTML = //html
           text: ''
         };
         if (text === Module.setStatus.text) return;
-        var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+        var m = text.match(/([^(]+)\\((\\d+(\\.\\d+)?)\\/(\\d+)\\)/);
         var now = Date.now();
         if (m && now - Date.now() < 30) return; // if this is a progress update, skip it if too soon
         if (m) {
@@ -302,6 +299,6 @@ const srcHTML = //html
 </body>
 
 </html>
-`
+`;
 
-export default stringEscape(srcHTML);
+export default srcHTML;

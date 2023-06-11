@@ -1,4 +1,4 @@
-import srcDocHTML from "../srcDoc";
+import srcHTML from "../srcDoc";
 import React from "react";
 interface PewPewProps
   extends React.DetailedHTMLProps<
@@ -49,7 +49,7 @@ function PewPew(props: PewPewProps) {
     <iframe
       ref={iFrameRef}
       title="PewPew"
-      srcDoc={srcDocHTML}
+      srcDoc={srcHTML}
       onClick={() => {
         window.focus();
       }}
