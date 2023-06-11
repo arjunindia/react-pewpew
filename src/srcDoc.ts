@@ -1,4 +1,8 @@
-const srcDocHTML = //html
+function stringEscape(s: string) {
+    return s ? s.replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/\t/g,'\\t').replace(/\v/g,'\\v').replace(/'/g,"\\'").replace(/"/g,'\\"').replace(/[\x00-\x1F\x80-\x9F]/g,hex) : s;
+    function hex(c:string) { var v = '0'+c.charCodeAt(0).toString(16); return '\\x'+v.substr(v.length-2); }
+}
+const srcHTML = //html
 `
 <!doctype html>
 <html lang="en-us">
@@ -266,7 +270,6 @@ const srcDocHTML = //html
       element_that_makes_sound_on_click.onclick = null;
     }
 
-    
     let wasmReady = false;
     Module['onRuntimeInitialized'] = function() {
       wasmReady = true;
@@ -301,4 +304,4 @@ const srcDocHTML = //html
 </html>
 `
 
-export default srcDocHTML;
+export default stringEscape(srcHTML);
