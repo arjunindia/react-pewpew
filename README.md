@@ -16,7 +16,8 @@ public
     └── index.html 
 ```
 
-Then replace index.html with [This HTML file](https://raw.githubusercontent.com/arjunindia/react-pewpew/main/public/wasm/index.html).<br/>
+(No longer needed, only do this if not working) Then replace index.html with [This HTML file](https://raw.githubusercontent.com/arjunindia/react-pewpew/main/public/wasm/index.html).
+
 ## Installation
 
 `npm install react-pewpew`<br/>
