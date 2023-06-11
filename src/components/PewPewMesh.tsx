@@ -74,7 +74,12 @@ function PewPewMesh(props: PewPewMeshProps) {
         setMesh(mesh);
       });
   }
-  React.useEffect(meshSetter, []);
+  React.useEffect(()=>{
+    const t = setTimeout(meshSetter, 100);
+    return () => {
+      clearTimeout(t);
+    } 
+  }, []);
   React.useEffect(meshSetter, [props.mesh]);
 
   const { mesh, ...rest } = props;

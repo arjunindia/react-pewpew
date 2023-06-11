@@ -1,6 +1,7 @@
 import type { Story } from "@ladle/react";
 import { PewPew } from "../";
 import JSZip from "jszip";
+import React from "react";
 
 async function zipLevel() {
   const zip = new JSZip();
@@ -17,7 +18,6 @@ async function zipLevel() {
 }
 
 const level = await zipLevel();
-
-export const PewPewStory: Story = () => (
-  <PewPew level={level} style={{ width: "100%", height: "100%" }} />
-);
+export const PewPewStory: Story = () => {
+  return (<PewPew level={level} style={{ width: "100%", height: "100%" }} />);
+}

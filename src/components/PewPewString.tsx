@@ -33,7 +33,10 @@ function PewPewString(props: PewPewStringProps) {
         setLevel(level);
       });
   }
-  React.useEffect(levelSetter, []);
+  React.useEffect(()=>{
+    const t = setTimeout(levelSetter, 500);
+    return () => clearTimeout(t);
+  },[])
   React.useEffect(levelSetter, [props.level]);
 
   const { level, ...rest } = props;

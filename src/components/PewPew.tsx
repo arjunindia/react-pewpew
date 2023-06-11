@@ -25,6 +25,7 @@ interface PewPewProps
  */
 function PewPew(props: PewPewProps) {
   const iFrameRef = React.useRef<HTMLIFrameElement>(null);
+  const [ready,setReady] = React.useState(false);
   const postToIFrame = () => {
     iFrameRef.current?.contentWindow?.postMessage(
       {
@@ -38,11 +39,16 @@ function PewPew(props: PewPewProps) {
     postToIFrame();
   }, [props.level]);
   React.useEffect(() => {
-    window.addEventListener("message", (event) => {
-      if (event.data.type === "ready") {
-        postToIFrame();
+    const fn = (event:any) => {
+      if (event.data.type === "ready"){
+        setReady(true);
+        setTimeout(postToIFrame, 1000);
       }
-    });
+    }
+    window.addEventListener("message", fn);
+    return () => {
+      window.removeEventListener("message", fn);
+    }
   }, []);
   let { level, ...rest } = props;
   return (

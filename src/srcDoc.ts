@@ -268,10 +268,22 @@ const srcHTML = //html
     }
 
     let wasmReady = false;
+    let leval = null;
     Module['onRuntimeInitialized'] = function() {
       wasmReady = true;
       parent.postMessage({ type: "ready" }, "*");
-    }
+      if(leval){
+      try{
+            let array = new Uint8Array(leval);
+            let heapSpace = Module._malloc(array.length * array.BYTES_PER_ELEMENT);
+            Module.HEAP8.set(array, heapSpace);
+            Module['__Z9LoadLevelmi'](heapSpace, array.length);
+          }
+          catch(e){
+            console.log(e);
+          }
+        }
+}
     window.addEventListener("message", (event) => {
         // extract the data from the message event
         const { data } = event;
@@ -283,10 +295,11 @@ const srcHTML = //html
           try{
             if (!wasmReady) {
               console.log("WASM not ready yet");
+              leval = level;
               return;
             }
-            var array = new Uint8Array(level);
-            var heapSpace = Module._malloc(array.length * array.BYTES_PER_ELEMENT);
+            let array = new Uint8Array(level);
+            let heapSpace = Module._malloc(array.length * array.BYTES_PER_ELEMENT);
             Module.HEAP8.set(array, heapSpace);
             Module['__Z9LoadLevelmi'](heapSpace, array.length);
           }
