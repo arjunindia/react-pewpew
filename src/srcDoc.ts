@@ -224,9 +224,7 @@ const srcDocHTML = //html
         if (text) Module.printErr('[post-exception status] ' + text);
       };
     };
-  </script>
 
-  <script>
     try {
       WebAssembly;
       var xhr = new XMLHttpRequest();
@@ -267,8 +265,8 @@ const srcDocHTML = //html
       source.start();
       element_that_makes_sound_on_click.onclick = null;
     }
-  </script>
-  <script defer>
+
+    
     let wasmReady = false;
     Module['onRuntimeInitialized'] = function() {
       wasmReady = true;
