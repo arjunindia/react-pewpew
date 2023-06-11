@@ -1,7 +1,7 @@
 {
   "name": "react-pewpew",
   "private": false,
-  "version": "1.0.14",
+  "version": "1.0.15",
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -39,6 +39,7 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types":"./dist/index.d.ts",
       "import": "./dist/react-pewpew.esm.js",
       "require": "./dist/react-pewpew.cjs.js"
     },
