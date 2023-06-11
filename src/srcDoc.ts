@@ -235,7 +235,7 @@ const srcDocHTML = //html
       xhr.onload = function () {
         Module.wasmBinary = xhr.response;
         var script = document.createElement('script');
-        script.src = "pewengine.js";
+        script.src = "/wasm/pewengine.js";
         document.body.appendChild(script);
       };
       xhr.send(null);
