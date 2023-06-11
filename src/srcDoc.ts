@@ -1,3 +1,5 @@
+const srcDocHTML = //html
+`
 <!doctype html>
 <html lang="en-us">
 
@@ -228,7 +230,7 @@
     try {
       WebAssembly;
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'pewengine.wasm', true);
+      xhr.open('GET', '/wasm/pewengine.wasm', true);
       xhr.responseType = 'arraybuffer';
       xhr.onload = function () {
         Module.wasmBinary = xhr.response;
@@ -299,3 +301,6 @@
 </body>
 
 </html>
+`
+
+export default srcDocHTML;

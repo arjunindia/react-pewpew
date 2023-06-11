@@ -22,17 +22,19 @@ interface PewPewStringProps
  */
 function PewPewString(props: PewPewStringProps) {
   const [levelString, setLevel] = React.useState<Uint8Array>(new Uint8Array(0));
-  React.useEffect(() => {
-    const zip = new JSZip();
-    zip.file("/level.lua", props.level);
-    zip.file(
-      "/manifest.json",
-      '{"name":"level","descriptions":["..."],"entry_point":"level.lua","has_score_leaderboard":false,}'
-    );
-    zip.generateAsync({ type: "uint8array" }).then((level) => {
-      setLevel(level);
-    });
-  }, [props.level]);
+  function levelSetter(){
+      const zip = new JSZip();
+      zip.file("/level.lua", props.level);
+      zip.file(
+        "/manifest.json",
+        '{"name":"level","descriptions":["..."],"entry_point":"level.lua","has_score_leaderboard":false,}'
+      );
+      zip.generateAsync({ type: "uint8array" }).then((level) => {
+        setLevel(level);
+      });
+  }
+  React.useEffect(levelSetter, []);
+  React.useEffect(levelSetter, [props.level]);
 
   const { level, ...rest } = props;
   return <PewPew level={levelString} {...rest} />;

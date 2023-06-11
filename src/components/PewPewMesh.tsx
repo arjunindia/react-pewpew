@@ -52,28 +52,30 @@ meshes = {
  */
 function PewPewMesh(props: PewPewMeshProps) {
   const [meshString, setMesh] = React.useState<Uint8Array>(new Uint8Array(0));
-  React.useEffect(() => {
-    const zip = new JSZip();
-    zip.file(
-      "/level.lua",
-      `
-        pewpew.set_level_size(5000fx, 5000fx)
-
-        local background1 = pewpew.new_customizable_entity(0fx, 0fx)
-        pewpew.customizable_entity_set_mesh(background1, "/dynamic/mesh.lua", 0)
-        
-        pewpew.new_player_ship(100fx, 100fx, 0)
+  function meshSetter(){
+      const zip = new JSZip();
+      zip.file(
+        "/level.lua",
         `
-    );
-    zip.file(
-      "/manifest.json",
-      '{"name":"level","descriptions":["..."],"entry_point":"level.lua","has_score_leaderboard":false,}'
-    );
-    zip.file("/mesh.lua", props.mesh);
-    zip.generateAsync({ type: "uint8array" }).then((mesh) => {
-      setMesh(mesh);
-    });
-  }, [props.mesh]);
+          pewpew.set_level_size(5000fx, 5000fx)
+  
+          local background1 = pewpew.new_customizable_entity(0fx, 0fx)
+          pewpew.customizable_entity_set_mesh(background1, "/dynamic/mesh.lua", 0)
+          
+          pewpew.new_player_ship(100fx, 100fx, 0)
+          `
+      );
+      zip.file(
+        "/manifest.json",
+        '{"name":"level","descriptions":["..."],"entry_point":"level.lua","has_score_leaderboard":false,}'
+      );
+      zip.file("/mesh.lua", props.mesh);
+      zip.generateAsync({ type: "uint8array" }).then((mesh) => {
+        setMesh(mesh);
+      });
+  }
+  React.useEffect(meshSetter, []);
+  React.useEffect(meshSetter, [props.mesh]);
 
   const { mesh, ...rest } = props;
   return <PewPew level={meshString} {...rest} />;

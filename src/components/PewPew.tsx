@@ -1,4 +1,4 @@
-import type { RefObject } from "react";
+import srcDocHTML from "../srcDoc";
 import React from "react";
 interface PewPewProps
   extends React.DetailedHTMLProps<
@@ -37,13 +37,19 @@ function PewPew(props: PewPewProps) {
   React.useEffect(() => {
     postToIFrame();
   }, [props.level]);
-
+  React.useEffect(() => {
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "ready") {
+        postToIFrame();
+      }
+    });
+  }, []);
   let { level, ...rest } = props;
   return (
     <iframe
       ref={iFrameRef}
       title="PewPew"
-      src={`wasm/index.html`}
+      srcDoc={srcDocHTML}
       onClick={() => {
         window.focus();
       }}
